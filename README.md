@@ -1,80 +1,157 @@
-# E-Commerce Transaction Analysis Using Hadoop MapReduce
+# 🛒 E-Commerce Transaction Analysis
 
-## 1. Project Overview
-This project analyzes e-commerce transaction data using Apache Hadoop
-MapReduce. It calculates transaction counts, successful and failed
-payments, transaction amounts, payment-method statistics, and
-successful sales by product category.
+<p align="center">
+  <b>An Interactive Big Data Analytics Dashboard using Hadoop MapReduce and Streamlit</b>
+</p>
 
-## 2. Technologies Used
-- Apache Hadoop 3.4.2
-- Java
-- Hadoop Distributed File System (HDFS)
-- YARN
-- MapReduce
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/Hadoop-66CCFF?style=for-the-badge&logo=apachehadoop&logoColor=black" alt="Hadoop"/>
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/>
+</p>
 
-## 3. Project Structure
-- input/transactions.csv: Sample transaction dataset
-- src/EcommerceAnalysis.java: Java MapReduce source code
-- EcommerceAnalysis.jar: Compiled application
-- results.txt: Initial analysis output
-- final_results.txt: Improved analysis output
-- docs/: Project documentation
-- screenshots/: Demonstration screenshots
+## 🌐 Live Demo
 
-## 4. Dataset
-The sample dataset contains 20 transactions and these fields:
-transaction_id, customer_id, amount, payment_method, status,
-product_category.
+**Live Website:** [E-Commerce Transaction Analysis Dashboard](https://ecommerce-bda-8sfxancy7yprff7nuqwq2r.streamlit.app/)
 
-## 5. Main Analysis
+## 📌 Overview
+
+E-Commerce Transaction Analysis is a Big Data Analytics mini project designed to analyze transaction records, evaluate sales performance, identify failed transactions, and visualize category-wise sales and payment trends.
+
+The project combines a Java-based Hadoop MapReduce implementation with a Python Streamlit dashboard to present transaction analytics through an interactive web interface.
+
+## 🎯 Objectives
+
+- Analyze e-commerce transaction records.
+- Calculate transaction values and successful sales.
+- Identify failed transactions.
+- Analyze sales across product categories.
+- Compare successful transactions by payment method.
+- Present analytical results using interactive charts and metrics.
+
+## ✨ Features
+
+- **Interactive Dashboard:** View transaction metrics and sales summaries.
+- **Transaction Entry:** Add transactions through a form.
+- **Sales Analytics:** Visualize successful sales by product category.
+- **Payment Analysis:** Compare successful transactions by payment method.
+- **Transaction Monitoring:** View transaction records and failed transaction counts.
+- **CSV Download:** Export dashboard transaction records.
+- **Live Deployment:** Access the dashboard through a public URL.
+
+## 🔄 Workflow
+
+1. Collect or upload e-commerce transaction data.
+2. Process transaction records using the project's data analysis workflow.
+3. Analyze transaction amounts, statuses, categories, and payment methods.
+4. Calculate summary metrics and aggregate values.
+5. Display results through the Streamlit dashboard.
+
+> **Note:** The currently deployed dashboard calculates its displayed metrics using Python and Pandas. The live transaction form has not yet been verified as directly triggering Hadoop MapReduce jobs.
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Python | Dashboard logic and data analysis |
+| Java | MapReduce implementation |
+| Hadoop MapReduce | Distributed data processing component |
+| Streamlit | Interactive web application |
+| Pandas | Tabular data processing |
+| Git and GitHub | Version control and project hosting |
+| Streamlit Community Cloud | Web application deployment |
+
+## 📊 Dashboard Results
+
+The dashboard displays:
+
 - Total number of transactions
-- Successful and failed transaction counts
-- Total transaction amount
-- Successful sales and failed transaction amounts
-- Successful sales by product category
-- Payment method usage and failure counts
+- Total transaction value
+- Successful sales amount
+- Failed transaction count
+- Category-wise successful sales
+- Successful transactions by payment method
+- Transaction records
 
-## 6. Run the Project
-Start Hadoop HDFS and YARN, then upload the input data:
+Results change when new transactions are added through the dashboard. The displayed values depend on the current dashboard dataset.
 
-hdfs dfs -mkdir -p /ecommerce/input
-hdfs dfs -put -f ~/ecommerce-bda/input/transactions.csv /ecommerce/input/
+## 🚀 Run Locally
 
-Compile the Java program:
+### Prerequisites
 
-cd ~/ecommerce-bda
-mkdir -p build
-javac -classpath "$(hadoop classpath)" -d build src/EcommerceAnalysis.java
-jar -cvf EcommerceAnalysis.jar -C build .
+- Python 3
+- pip
+- Git
 
-Run the MapReduce job:
+### Installation
 
-hadoop jar ~/ecommerce-bda/EcommerceAnalysis.jar EcommerceAnalysis /ecommerce/input/transactions.csv /ecommerce/output_v2
+**1. Clone the repository**
 
-Display results:
+```bash
+git clone https://github.com/RakshitaMahesh/ecommerce-bda.git
+cd ecommerce-bda
+```
 
-hdfs dfs -cat /ecommerce/output_v2/part-r-00000
+**2. Install dependencies**
 
-Save results locally:
+```bash
+pip install -r requirements.txt
+```
 
-hdfs dfs -cat /ecommerce/output_v2/part-r-00000 > ~/ecommerce-bda/final_results.txt
+**3. Run the Streamlit application**
 
-Note: Hadoop requires the output directory to be new for each job.
-If /ecommerce/output_v2 already exists, use a different output path
-or remove the old output directory before rerunning.
+```bash
+streamlit run src/app.py
+```
 
-## 7. Results Summary
-- Total transactions: 20
-- Successful transactions: 15
-- Failed transactions: 5
-- Transaction success rate: 75%
-- Successful sales amount: 28197.00
-- Failed transaction amount: 7650.00
-- Total attempted transaction amount: 35847.00
+**4. Open the local website**
 
-## 8. Conclusion
-The project demonstrates how Hadoop MapReduce can process transaction
-records and aggregate business metrics. The results are based on a
-small sample dataset created for academic demonstration and do not
-represent real commercial transaction data.
+```text
+http://localhost:8501
+```
+
+## 📁 Project Structure
+
+```text
+ecommerce-bda/
+├── src/
+│   ├── app.py
+│   └── EcommerceAnalysis.java
+├── input/
+├── docs/
+├── screenshots/
+├── requirements.txt
+├── dashboard.html
+├── README.md
+├── results.txt
+└── final_results.txt
+```
+
+*The structure above represents the intended organization; only files actually uploaded to GitHub will be available in the repository.*
+
+## 🔮 Future Enhancements
+
+- Connect the Streamlit dashboard directly to Hadoop MapReduce execution.
+- Integrate persistent storage for transaction records.
+- Support larger datasets and additional analytical reports.
+- Add advanced filtering and transaction search.
+- Improve deployment and data-processing integration.
+
+## ⚠️ Limitations
+
+- Dashboard transactions are maintained in the Streamlit session and are not guaranteed to persist after a session resets.
+- The current dashboard's analytics run in Python and Pandas.
+- Direct integration between live transaction entry and Hadoop MapReduce remains a future enhancement.
+
+## 👩‍💻 Author
+
+**Rakshita M**
+
+Big Data Analytics Mini Project — E-Commerce Transaction Analysis
+
+## 🔗 Project Links
+
+- **Live Demo:** https://ecommerce-bda-8sfxancy7yprff7nuqwq2r.streamlit.app/
+- **GitHub Repository:** https://github.com/RakshitaMahesh/ecommerce-bda
