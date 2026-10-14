@@ -145,7 +145,7 @@ ecommerce-bda/
 - The current dashboard's analytics run in Python and Pandas.
 - Direct integration between live transaction entry and Hadoop MapReduce remains a future enhancement.
 
-  ## Screenshots
+ ## Screenshots
 
 ### 1. Dashboard Overview
 ![Dashboard Overview](dashboard_overview.png)
@@ -159,8 +159,8 @@ ecommerce-bda/
 ### 4. Transaction Records
 ![Transaction Records](transaction_records.png)
 
-### 5. Add Transaction
-![Add Transaction](add_transaction.png)
+### 5. Dashboard Overview - Alternative View
+![Dashboard Overview](dashboard_overview1.png)
 
 
 ## 👩‍💻 Author
